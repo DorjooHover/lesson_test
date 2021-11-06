@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+ <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet" />
+<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<p>
+  <strong>Title:</strong>
+  <%= @lesson.title %>
+</p>
+<div style="width:400px; height:400px">
+<%= image_tag(@lesson.thumbnail, style:"width:100%; height:auto;")%>
+</div>
+
+<div style="width:400px; height:400px">
+<%= video_tag(url_for(@lesson.clip), style:"width:100%; height:auto;", controls: '')%>
+</div>
+<p>
+  <strong>Description:</strong>
+  <%= @lesson.description %>
+</p>
+<video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    width="640"
+    height="264"
+    poster="<%= url_for(@lesson.thumbnail)%>"
+    data-setup="{}"
+  >
+    <source src="<%= url_for(@lesson.clip)%>" type="video/mp4" >
+
+  </video>
+<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
+<%= link_to 'Back', lessons_path %>
+ <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
